@@ -12,5 +12,5 @@ dependencies {
 }
 
 application {
-    mainClass = "com.bitlake.app.AppKt"
+    mainClass = "com.bitlake.kshell.AppKt"
 }
