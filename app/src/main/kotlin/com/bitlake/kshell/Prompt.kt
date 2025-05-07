@@ -6,28 +6,16 @@
 */
 package com.bitlake.kshell
 
+import com.bitlake.ak.Environment
+
 object Prompt {
-
-    private var isActive = true
-
-    fun run() {
-        do {
-            render()
-            val input = readInput()
-            processInput(input)
-        } while (isActive)
+    private object PathDecorator {
+        fun decorate(path: String): String = path.replace(Environment.userHome, "~")
     }
 
-    private fun render() {
-        print(">> ")
-    }
-
-    private fun readInput(): String? = readLine()
-
-    private fun processInput(input: String?) {
-        when (input) {
-            "exit" -> isActive = false
-            else -> println(input)
-        }
+    fun render() {
+        val userName = Environment.userName
+        val currentWorkingDirectory = PathDecorator.decorate(Environment.currentWorkingDirectory)
+        print("$userName @ ${PathDecorator.decorate(currentWorkingDirectory)} >> ")
     }
 }

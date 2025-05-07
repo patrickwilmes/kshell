@@ -8,5 +8,5 @@
 package com.bitlake.kshell
 
 fun main() {
-    Prompt.run()
+    Repl.run()
 }
